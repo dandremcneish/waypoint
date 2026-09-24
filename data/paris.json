@@ -1,0 +1,204 @@
+{
+  "destination": "Paris, France",
+  "generated_at": "2026-09-23",
+  "weather": {
+    "dates": [
+      "2026-09-24",
+      "2026-09-25",
+      "2026-09-26",
+      "2026-09-27",
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30"
+    ],
+    "high_c": [
+      24.2,
+      27.2,
+      24.1,
+      26.8,
+      27.3,
+      31.2,
+      21.3
+    ]
+  },
+  "days": 4,
+  "itinerary": [
+    {
+      "day": 1,
+      "stops": [
+        {
+          "name": "Sainte-Chapelle",
+          "lat": 48.8553933,
+          "lon": 2.3449941,
+          "category": "landmark",
+          "description": "A royal chapel in the Gothic style, within the medieval Palais de la Cit\u00e9, on the \u00cele de la Cit\u00e9.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Sainte_Chapelle_-_Upper_level_1.jpg/500px-Sainte_Chapelle_-_Upper_level_1.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Sainte-Chapelle"
+        },
+        {
+          "name": "Notre-Dame de Paris",
+          "lat": 48.8529371,
+          "lon": 2.3500501,
+          "category": "landmark",
+          "description": "Notre-Dame de Paris is a medieval Catholic cathedral and basilica on the \u00cele de la Cit\u00e9, in the 4th arrondissement of Paris.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Notre-Dame_de_Paris%2C_4_October_2017.jpg/500px-Notre-Dame_de_Paris%2C_4_October_2017.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+        },
+        {
+          "name": "Panth\u00e9on",
+          "lat": 48.8461947,
+          "lon": 2.3460507,
+          "category": "landmark",
+          "description": "A monument in the 5th arrondissement standing in the Latin Quarter, on the Montagne Sainte-Genevi\u00e8ve.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Pantheon_of_Paris_007.JPG/500px-Pantheon_of_Paris_007.JPG",
+          "wiki_url": "https://en.wikipedia.org/wiki/Panth%C3%A9on"
+        },
+        {
+          "name": "Luxembourg Gardens",
+          "lat": 48.8486408,
+          "lon": 2.3351989,
+          "category": "park",
+          "description": "The Jardin du Luxembourg is located in the 6th arrondissement of Paris, a favorite spot for a relaxed stroll.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LuxembourgMontparnasse.JPG/500px-LuxembourgMontparnasse.JPG",
+          "wiki_url": "https://en.wikipedia.org/wiki/Jardin_du_Luxembourg"
+        },
+        {
+          "name": "Louvre Museum",
+          "lat": 48.8611473,
+          "lon": 2.3380277,
+          "category": "museum",
+          "description": "The Louvre is a national art museum in Paris, France, home to some of the most canonical works of Western art, including the Mona Lisa.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/500px-Louvre_Museum_Wikimedia_Commons.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Louvre"
+        },
+        {
+          "name": "Centre Pompidou",
+          "lat": 48.8604964,
+          "lon": 2.3524221,
+          "category": "museum",
+          "description": "A building complex in Paris housing modern and contemporary art, known for its distinctive inside-out architecture.",
+          "image": null,
+          "wiki_url": "https://en.wikipedia.org/wiki/Centre_Pompidou"
+        },
+        {
+          "name": "Le Marais",
+          "lat": 48.8603823,
+          "lon": 2.360742,
+          "category": "district",
+          "description": "A historic district spreading across the 3rd and 4th arrondissements, once aristocratic, now home to galleries, boutiques, and cafes.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Paris_Hotel_de_Sens_dsc04028.jpg/500px-Paris_Hotel_de_Sens_dsc04028.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/The_Marais"
+        },
+        {
+          "name": "Catacombs of Paris",
+          "lat": 48.8337439,
+          "lon": 2.3322925,
+          "category": "landmark",
+          "description": "Underground ossuaries holding the remains of more than six million people, built to consolidate Paris's ancient stone quarries.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Catacumbas%2C_Par%C3%ADs%2C_Francia%2C_2022-11-01%2C_DD_105-107_HDR.jpg/500px-Catacumbas%2C_Par%C3%ADs%2C_Francia%2C_2022-11-01%2C_DD_105-107_HDR.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Catacombs_of_Paris"
+        }
+      ],
+      "walking_km": 8.8
+    },
+    {
+      "day": 2,
+      "stops": [
+        {
+          "name": "Champs-\u00c9lys\u00e9es",
+          "lat": 48.8707573,
+          "lon": 2.3053312,
+          "category": "shopping",
+          "description": "A 1.9km avenue in the 8th arrondissement, running between the Place de la Concorde and the Arc de Triomphe.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Avenue_des_Champs-%C3%89lys%C3%A9es_July_24%2C_2009_N1.jpg/500px-Avenue_des_Champs-%C3%89lys%C3%A9es_July_24%2C_2009_N1.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Champs-%C3%89lys%C3%A9es"
+        },
+        {
+          "name": "Arc de Triomphe",
+          "lat": 48.8737791,
+          "lon": 2.2950372,
+          "category": "landmark",
+          "description": "One of the most famous monuments in Paris, located at the western end of the Champs-\u00c9lys\u00e9es, at the centre of Place Charles de Gaulle.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Arc_de_Triomphe_-_Ao%C3%BBt_2026.jpg/500px-Arc_de_Triomphe_-_Ao%C3%BBt_2026.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Arc_de_Triomphe"
+        },
+        {
+          "name": "Eiffel Tower",
+          "lat": 48.8582599,
+          "lon": 2.2945006,
+          "category": "landmark",
+          "description": "The Eiffel Tower is a lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons.jpg/500px-Tour_Eiffel_Wikimedia_Commons.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Eiffel_Tower"
+        },
+        {
+          "name": "Rodin Museum",
+          "lat": 48.8547473,
+          "lon": 2.315867,
+          "category": "museum",
+          "description": "An art museum opened in 1919, primarily dedicated to the works of French sculptor Auguste Rodin, with beautiful sculpture gardens.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Le_mus%C3%A9e_Rodin.jpg/500px-Le_mus%C3%A9e_Rodin.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Mus%C3%A9e_Rodin"
+        },
+        {
+          "name": "Mus\u00e9e d'Orsay",
+          "lat": 48.8599179,
+          "lon": 2.3265849,
+          "category": "museum",
+          "description": "A museum on the Left Bank of the Seine, housed in the former Gare d'Orsay, holding mainly French art dating from 1848 to 1914.",
+          "image": null,
+          "wiki_url": "https://en.wikipedia.org/wiki/Mus%C3%A9e_d'Orsay"
+        },
+        {
+          "name": "Place de la Concorde",
+          "lat": 48.8655715,
+          "lon": 2.3212248,
+          "category": "landmark",
+          "description": "The largest public square in Paris, measuring 7.6 hectares, located in the 8th arrondissement.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Place_de_la_Concorde_from_the_Eiffel_Tower%2C_Paris_April_2011.jpg/500px-Place_de_la_Concorde_from_the_Eiffel_Tower%2C_Paris_April_2011.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Place_de_la_Concorde"
+        }
+      ],
+      "walking_km": 5.9
+    },
+    {
+      "day": 3,
+      "stops": [
+        {
+          "name": "Sacr\u00e9-C\u0153ur",
+          "lat": 48.8868058,
+          "lon": 2.3430153,
+          "category": "landmark",
+          "description": "The Basilica of the Sacred Heart of Montmartre, commonly known as Sacr\u00e9-C\u0153ur, is a Catholic church and minor basilica dedicated to the Sacred Heart of Jesus.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Le_sacre_coeur.jpg/500px-Le_sacre_coeur.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Sacr%C3%A9-C%C5%93ur,_Paris"
+        },
+        {
+          "name": "Montmartre",
+          "lat": 48.8854619,
+          "lon": 2.3391535,
+          "category": "district",
+          "description": "A large hill in Paris's northern 18th arrondissement, known for its artistic history and panoramic views.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/View_from_Notre-Dame_de_Paris%2C_24_June_2014_004.jpg/500px-View_from_Notre-Dame_de_Paris%2C_24_June_2014_004.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Montmartre"
+        }
+      ],
+      "walking_km": 0.3
+    },
+    {
+      "day": 4,
+      "stops": [
+        {
+          "name": "Palace of Versailles",
+          "lat": 48.8044252,
+          "lon": 2.1202853,
+          "category": "day_trip",
+          "description": "A ch\u00e2teau and historic monument in Versailles, southwest of Paris, the principal residence of French kings until the Revolution.",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081_%28cropped%29.jpg/500px-Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081_%28cropped%29.jpg",
+          "wiki_url": "https://en.wikipedia.org/wiki/Palace_of_Versailles"
+        }
+      ],
+      "walking_km": 0
+    }
+  ]
+}
