@@ -1,16 +1,22 @@
 /*
- * Waypoint — client-side trip builder.
+ * Waypoint: client-side trip builder.
  *
- * Everything below runs live in the browser, no backend, no API keys:
- *   1. Geocode the typed city with Nominatim (OpenStreetMap).
+ * Everything below runs live in the browser, no backend, no login:
+ *   1. Geocode the typed city with Nominatim (OpenStreetMap), scoped to a
+ *      country if the person picked one from the dropdown.
  *   2. Pull named landmarks/museums/parks near that point from Overpass
  *      (OpenStreetMap's query API), filtered to avoid noise like zoo
- *      enclosures or unnamed nodes.
- *   3. Enrich the top landmarks with a description + photo from Wikipedia.
+ *      enclosures or unnamed nodes. Fired at three public mirrors at once
+ *      and the first one back wins, so one slow mirror can't stall a search.
+ *   3. Enrich the top landmarks with a description and photo from Wikipedia,
+ *      fetched in parallel.
  *   4. Pull a 7-day forecast from Open-Meteo.
- *   5. Cluster the landmarks into walkable days with the same k-means +
+ *   5. Cluster the landmarks into walkable days with the same k-means and
  *      nearest-neighbor routing used by the offline ETL (etl/build_itinerary.py),
  *      ported to JS here so a brand-new city doesn't need a pipeline run first.
+ *   6. Build real, no-signup deep links to Google Flights, Google Hotels,
+ *      Booking.com, and Airbnb for the chosen dates, so booking anything is
+ *      one click to the real site, never inside this app.
  *
  * A handful of cities ship pre-built in data/*.json (populated by the GitHub
  * Actions pipeline in etl/) so the demo loads instantly; anything else is
@@ -23,19 +29,56 @@ const QUICK_PICKS = [
 
 let tripState = null; // { destination, weather, itinerary: [{day, stops, walking_km}] }
 let activeDay = 1;
+let selectedPlace = null; // { lat, lon, label } once chosen from suggestions or geocoded
 
 const els = {
+  countrySelect: document.getElementById("country-select"),
   destInput: document.getElementById("dest-input"),
-  daysSelect: document.getElementById("days-select"),
+  suggestBox: document.getElementById("suggest-box"),
+  checkinInput: document.getElementById("checkin-input"),
+  checkoutInput: document.getElementById("checkout-input"),
   planBtn: document.getElementById("plan-btn"),
   quickPicks: document.getElementById("quick-picks"),
   statusLine: document.getElementById("status-line"),
   weatherStrip: document.getElementById("weather-strip"),
+  bookStrip: document.getElementById("book-strip"),
   dayTabs: document.getElementById("day-tabs"),
   dayPanels: document.getElementById("day-panels"),
 };
 
+function fmtDate(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function defaultDates() {
+  const start = new Date();
+  start.setDate(start.getDate() + 21); // three weeks out by default
+  const end = new Date(start);
+  end.setDate(end.getDate() + 4);
+  return { start: fmtDate(start), end: fmtDate(end) };
+}
+
 function init() {
+  // Country dropdown
+  els.countrySelect.innerHTML = COUNTRY_LIST.map(
+    ([name, code]) => `<option value="${code}">${name}</option>`
+  ).join("");
+
+  // Date defaults
+  const { start, end } = defaultDates();
+  els.checkinInput.value = start;
+  els.checkoutInput.value = end;
+  els.checkinInput.min = fmtDate(new Date());
+  els.checkoutInput.min = start;
+  els.checkinInput.addEventListener("change", () => {
+    if (els.checkinInput.value) els.checkoutInput.min = els.checkinInput.value;
+    if (els.checkoutInput.value && els.checkoutInput.value <= els.checkinInput.value) {
+      const d = new Date(els.checkinInput.value + "T00:00:00");
+      d.setDate(d.getDate() + 1);
+      els.checkoutInput.value = fmtDate(d);
+    }
+  });
+
   els.quickPicks.innerHTML = QUICK_PICKS.map(
     (d) => `<button class="quick-pick" data-key="${d.key}" type="button">${d.label}</button>`
   ).join("");
@@ -43,13 +86,23 @@ function init() {
     btn.addEventListener("click", () => {
       const d = QUICK_PICKS.find((q) => q.key === btn.dataset.key);
       els.destInput.value = d.label;
+      selectedPlace = null;
+      hideSuggestions();
       loadPrebuilt(d.file, d.label);
     });
   });
 
   els.planBtn.addEventListener("click", handleSearch);
   els.destInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") handleSearch();
+    if (e.key === "Enter") {
+      hideSuggestions();
+      handleSearch();
+    }
+    if (e.key === "Escape") hideSuggestions();
+  });
+  els.destInput.addEventListener("input", onDestInput);
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-bar")) hideSuggestions();
   });
 
   // Load the seeded demo so the page isn't empty on first paint.
@@ -62,24 +115,84 @@ function setStatus(msg, isError) {
   els.statusLine.classList.toggle("error", !!isError);
 }
 
+/* ---------------- City suggestions (autocomplete dropdown) ---------------- */
+
+let suggestTimer = null;
+let suggestAbort = null;
+
+function hideSuggestions() {
+  els.suggestBox.classList.remove("open");
+  els.suggestBox.innerHTML = "";
+}
+
+function onDestInput() {
+  selectedPlace = null;
+  const q = els.destInput.value.trim();
+  clearTimeout(suggestTimer);
+  if (q.length < 3) {
+    hideSuggestions();
+    return;
+  }
+  suggestTimer = setTimeout(() => fetchSuggestions(q), 300); // debounce
+}
+
+async function fetchSuggestions(q) {
+  if (suggestAbort) suggestAbort.abort();
+  suggestAbort = new AbortController();
+  const cc = els.countrySelect.value;
+  let url =
+    "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&q=" +
+    encodeURIComponent(q);
+  if (cc) url += "&countrycodes=" + cc;
+
+  try {
+    const res = await fetch(url, { headers: { Accept: "application/json" }, signal: suggestAbort.signal });
+    if (!res.ok) return;
+    const rows = await res.json();
+    if (els.destInput.value.trim() !== q) return; // stale response, input changed since
+    if (!rows.length) {
+      hideSuggestions();
+      return;
+    }
+    els.suggestBox.innerHTML = rows
+      .map((r, i) => {
+        const label = r.display_name.split(",").slice(0, 3).join(",").trim();
+        return `<div class="suggest-item" data-i="${i}">${label}</div>`;
+      })
+      .join("");
+    els.suggestBox.classList.add("open");
+    els.suggestBox.querySelectorAll(".suggest-item").forEach((item, i) => {
+      item.addEventListener("click", () => {
+        const r = rows[i];
+        const label = r.display_name.split(",").slice(0, 2).join(",").trim();
+        els.destInput.value = label;
+        selectedPlace = { lat: parseFloat(r.lat), lon: parseFloat(r.lon), label };
+        hideSuggestions();
+      });
+    });
+  } catch (err) {
+    // aborted or offline — no suggestions this keystroke, not fatal
+  }
+}
+
+/* ---------------- Search orchestration ---------------- */
+
 let searchInFlight = false;
 
 async function handleSearch() {
   if (searchInFlight) return; // ignore double-clicks / double-Enter while a search is running
   const query = els.destInput.value.trim();
   if (!query) return;
-  const days = parseInt(els.daysSelect.value, 10) || 4;
 
   searchInFlight = true;
   els.planBtn.disabled = true;
   els.planBtn.textContent = "Planning…";
   try {
-    // If it's one of the quick-pick cities, use the pre-built file — instant.
     const preset = QUICK_PICKS.find((d) => d.label.toLowerCase() === query.toLowerCase());
-    if (preset) {
+    if (preset && !selectedPlace) {
       await loadPrebuilt(preset.file, preset.label);
     } else {
-      await planLiveTrip(query, days);
+      await planLiveTrip(query, selectedPlace);
     }
   } finally {
     searchInFlight = false;
@@ -100,22 +213,36 @@ async function loadPrebuilt(file, label) {
     renderWeather(data.weather);
     renderDayTabs(data.itinerary);
     renderDayPanels(data.itinerary);
+    renderBookingLinks(label);
+    setStatus(`${label}, ready to explore.`);
   } catch (err) {
-    setStatus(`Couldn't load the pre-built demo for ${label} — searching live instead…`);
-    await planLiveTrip(label, 4);
+    setStatus(`Couldn't load the pre-built demo for ${label}, searching live instead…`);
+    await planLiveTrip(label, null);
   }
 }
 
 /* ---------------- Live pipeline ---------------- */
 
-async function planLiveTrip(query, days) {
+function tripDays() {
+  const start = new Date(els.checkinInput.value + "T00:00:00");
+  const end = new Date(els.checkoutInput.value + "T00:00:00");
+  const diff = Math.round((end - start) / 86400000);
+  return Math.min(Math.max(diff, 1), 10);
+}
+
+async function planLiveTrip(query, knownPlace) {
   els.dayPanels.innerHTML = "";
   els.dayTabs.innerHTML = "";
   els.weatherStrip.innerHTML = "";
+  els.bookStrip.innerHTML = "";
+  const days = tripDays();
 
   try {
-    setStatus(`Finding ${query}…`);
-    const place = await geocodeCity(query);
+    let place = knownPlace;
+    if (!place) {
+      setStatus(`Finding ${query}…`);
+      place = await geocodeCity(query);
+    }
     if (!place) {
       setStatus(`Couldn't find "${query}". Try a more specific name, like "Lisbon, Portugal".`, true);
       els.dayPanels.innerHTML = `<div class="empty-state">No results for "${query}".</div>`;
@@ -125,10 +252,10 @@ async function planLiveTrip(query, days) {
     setStatus(`Pulling landmarks around ${place.label}…`);
     const rawPlaces = await fetchLandmarks(place.lat, place.lon);
     if (rawPlaces.length < 3) {
-      setStatus(`Only found a handful of landmarks for ${place.label} — showing what's available.`);
+      setStatus(`Only found a handful of landmarks for ${place.label}, showing what's available.`);
     }
 
-    setStatus(`Adding photos & descriptions (${rawPlaces.length} spots)…`);
+    setStatus(`Adding photos and descriptions (${rawPlaces.length} spots)…`);
     const enriched = await enrichWithWikipedia(rawPlaces);
 
     setStatus(`Checking the forecast…`);
@@ -148,13 +275,14 @@ async function planLiveTrip(query, days) {
     renderWeather(weather);
     renderDayTabs(itinerary);
     renderDayPanels(itinerary);
+    renderBookingLinks(place.label);
     setStatus(`${enriched.length} spots around ${place.label}, grouped into ${itinerary.length} walkable days.`);
   } catch (err) {
     console.error(err);
-    const busy = /overpass|remark|timeout/i.test(String(err && err.message));
+    const busy = /overpass|remark|timeout|abort/i.test(String(err && err.message));
     setStatus(
       busy
-        ? "The map data service is busy right now — wait a few seconds and hit Plan trip again."
+        ? "The map data service is busy right now, wait a few seconds and hit Plan trip again."
         : "Something went wrong pulling live data. Give it another try in a moment.",
       true
     );
@@ -163,9 +291,11 @@ async function planLiveTrip(query, days) {
 }
 
 async function geocodeCity(query) {
-  const url =
+  const cc = els.countrySelect.value;
+  let url =
     "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&addressdetails=1&q=" +
     encodeURIComponent(query);
+  if (cc) url += "&countrycodes=" + cc;
   const res = await fetch(url, { headers: { Accept: "application/json" } });
   if (!res.ok) return null;
   const rows = await res.json();
@@ -180,8 +310,8 @@ async function geocodeCity(query) {
 }
 
 // Tags we consider worth a stop, and tags we explicitly exclude (zoo/theme
-// park interiors flood Overpass with hundreds of un-name-worthy sub-nodes —
-// animal enclosures, individual rides — that swamp real landmarks).
+// park interiors flood Overpass with hundreds of un-name-worthy sub-nodes,
+// animal enclosures, individual rides, that swamp real landmarks).
 const INCLUDE_QUERY_PARTS = [
   '["tourism"~"attraction|museum|viewpoint|gallery|artwork"]["name"]',
   '["historic"~"castle|monument|memorial|church|ruins|archaeological_site|fort|tower|palace|city_gate|manor"]["name"]',
@@ -190,39 +320,55 @@ const INCLUDE_QUERY_PARTS = [
 ];
 const EXCLUDE_TOURISM = new Set(["information", "hotel", "guest_house", "hostel", "motel", "apartment", "camp_site", "caravan_site"]);
 
-// Overpass's shared public instance rate-limits anonymous IPs fairly
-// aggressively. Spread requests across a few known-good mirrors and retry
-// with backoff so one throttled/slow mirror doesn't sink the whole search.
+// Overpass's shared public instances rate-limit anonymous IPs fairly
+// aggressively. Fire the same query at three known-good mirrors at once and
+// take whichever answers first, instead of waiting on one at a time, so a
+// single slow or queued mirror can't stall the whole search.
 const OVERPASS_MIRRORS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
   "https://overpass.openstreetmap.ru/api/interpreter",
 ];
 
-async function queryOverpass(query, attempts = 3) {
-  let lastErr = null;
-  for (let i = 0; i < attempts; i++) {
-    const mirror = OVERPASS_MIRRORS[i % OVERPASS_MIRRORS.length];
-    const controller = new AbortController();
-    const killer = setTimeout(() => controller.abort(), 12000); // don't let one slow/queued mirror stall the whole search
-    try {
-      const res = await fetch(mirror, {
-        method: "POST",
-        body: "data=" + encodeURIComponent(query),
-        signal: controller.signal,
+async function queryOverpass(query) {
+  const controller = new AbortController();
+  const killer = setTimeout(() => controller.abort(), 15000);
+  const attempt = (mirror) =>
+    fetch(mirror, {
+      method: "POST",
+      body: "data=" + encodeURIComponent(query),
+      signal: controller.signal,
+    })
+      .then((res) => res.text())
+      .then((text) => {
+        const data = JSON.parse(text); // mirrors return HTML/XML on rate-limit or error; this throws for those
+        if (data.remark) throw new Error("overpass remark: " + data.remark);
+        return data;
       });
-      const text = await res.text();
-      const data = JSON.parse(text); // mirrors return HTML/XML on rate-limit or error; this throws for those
-      if (data.remark) throw new Error("overpass remark: " + data.remark);
-      return data;
-    } catch (err) {
-      lastErr = err;
-      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 700 * (i + 1)));
-    } finally {
-      clearTimeout(killer);
+
+  try {
+    if (typeof Promise.any === "function") {
+      return await Promise.any(OVERPASS_MIRRORS.map(attempt));
     }
+    // Fallback for older browsers without Promise.any: race, but only
+    // resolve on success, reject only once every mirror has failed.
+    return await new Promise((resolve, reject) => {
+      let failures = 0;
+      OVERPASS_MIRRORS.forEach((mirror) =>
+        attempt(mirror).then(resolve, () => {
+          failures += 1;
+          if (failures === OVERPASS_MIRRORS.length) reject(new Error("overpass failed: all mirrors busy"));
+        })
+      );
+    });
+  } catch (err) {
+    if (typeof AggregateError !== "undefined" && err instanceof AggregateError) {
+      throw new Error("overpass failed: all mirrors busy");
+    }
+    throw err;
+  } finally {
+    clearTimeout(killer);
   }
-  throw lastErr || new Error("overpass failed");
 }
 
 async function fetchLandmarks(lat, lon) {
@@ -265,45 +411,43 @@ async function fetchLandmarks(lat, lon) {
 }
 
 async function enrichWithWikipedia(places) {
-  const results = [];
-  for (const place of places) {
-    let title = null;
-    if (place.wikipedia && place.wikipedia.includes(":")) {
-      title = place.wikipedia.split(":").slice(1).join(":");
-    } else {
-      title = place.name;
-    }
+  // Fetched in parallel, not one at a time, so this stage takes roughly one
+  // round trip instead of N.
+  const results = await Promise.all(
+    places.map(async (place) => {
+      let title = place.wikipedia && place.wikipedia.includes(":") ? place.wikipedia.split(":").slice(1).join(":") : place.name;
 
-    let description = null;
-    let image = null;
-    let wikiUrl = null;
-    try {
-      const res = await fetch(
-        "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(title),
-        { headers: { Accept: "application/json" } }
-      );
-      if (res.ok) {
-        const summary = await res.json();
-        if (summary.type !== "disambiguation") {
-          description = summary.extract || null;
-          image = (summary.thumbnail && summary.thumbnail.source) || null;
-          wikiUrl = (summary.content_urls && summary.content_urls.desktop && summary.content_urls.desktop.page) || null;
+      let description = null;
+      let image = null;
+      let wikiUrl = null;
+      try {
+        const res = await fetch(
+          "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(title),
+          { headers: { Accept: "application/json" } }
+        );
+        if (res.ok) {
+          const summary = await res.json();
+          if (summary.type !== "disambiguation") {
+            description = summary.extract || null;
+            image = (summary.thumbnail && summary.thumbnail.source) || null;
+            wikiUrl = (summary.content_urls && summary.content_urls.desktop && summary.content_urls.desktop.page) || null;
+          }
         }
+      } catch (err) {
+        // No Wikipedia match — the stop still shows with just its OSM name/category.
       }
-    } catch (err) {
-      // No Wikipedia match — the stop still shows with just its OSM name/category.
-    }
 
-    results.push({
-      name: place.name,
-      lat: place.lat,
-      lon: place.lon,
-      category: place.category,
-      description,
-      image,
-      wiki_url: wikiUrl,
-    });
-  }
+      return {
+        name: place.name,
+        lat: place.lat,
+        lon: place.lon,
+        category: place.category,
+        description,
+        image,
+        wiki_url: wikiUrl,
+      };
+    })
+  );
   return results;
 }
 
@@ -316,6 +460,54 @@ async function fetchWeather(lat, lon) {
   const data = await res.json();
   if (!data.daily) return null;
   return { dates: data.daily.time, high_c: data.daily.temperature_2m_max };
+}
+
+/* ---------------- Real booking deep links (no API keys, no sign-in) ---------------- */
+// These are the same public search URLs each site's own "share this search"
+// link produces — they just take you straight to real results on the real
+// site so booking always happens there, never inside this app.
+
+function renderBookingLinks(cityLabel) {
+  const city = cityLabel.split(",")[0].trim();
+  const checkin = els.checkinInput.value;
+  const checkout = els.checkoutInput.value;
+
+  const links = [
+    {
+      ic: "✈️",
+      name: "Google Flights",
+      sub: `Flights to ${city}`,
+      url: `https://www.google.com/travel/flights?q=${encodeURIComponent("Flights to " + city + " on " + checkin)}`,
+    },
+    {
+      ic: "🏨",
+      name: "Google Hotels",
+      sub: `Stays in ${city}`,
+      url: `https://www.google.com/travel/hotels/${encodeURIComponent(city)}?checkin=${checkin}&checkout=${checkout}`,
+    },
+    {
+      ic: "🛏️",
+      name: "Booking.com",
+      sub: `${checkin} → ${checkout}`,
+      url: `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&checkin=${checkin}&checkout=${checkout}`,
+    },
+    {
+      ic: "🏡",
+      name: "Airbnb",
+      sub: `${checkin} → ${checkout}`,
+      url: `https://www.airbnb.com/s/${encodeURIComponent(city)}/homes?checkin=${checkin}&checkout=${checkout}`,
+    },
+  ];
+
+  els.bookStrip.innerHTML = links
+    .map(
+      (l) => `
+    <a class="book-card" href="${l.url}" target="_blank" rel="noopener">
+      <span class="ic">${l.ic}</span>
+      <span>${l.name}<span class="sub">${l.sub}</span></span>
+    </a>`
+    )
+    .join("");
 }
 
 /* ---------------- Client-side day clustering (JS port of etl/build_itinerary.py) ---------------- */
@@ -446,7 +638,7 @@ function buildItinerary(places, days) {
   return itinerary;
 }
 
-/* ---------------- Rendering (unchanged from the pre-built-only version) ---------------- */
+/* ---------------- Rendering ---------------- */
 
 function renderWeather(weather) {
   if (!weather) {

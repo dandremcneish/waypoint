@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Waypoint — plan a trip you'll actually enjoy</title>
-<meta name="description" content="A trip planner that builds a real, walkable day-by-day itinerary from live map and travel data." />
+<title>Waypoint: plan a trip you'll actually enjoy</title>
+<meta name="description" content="A trip planner that builds a real, walkable day-by-day itinerary from live map and travel data, with real links to book flights, hotels, and things to do." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
@@ -14,35 +14,40 @@
 <div class="wrap">
   <header class="hero">
     <h1>Way<span>point</span></h1>
-    <p>Tell us where and for how long. We build a real day-by-day itinerary from live map data — grouped so you're not zig-zagging across town, with a photo and a real link for every stop. Drag any card to rearrange.</p>
+    <p>Tell us where and when. We build a real day-by-day itinerary from live map data, grouped so you're not zig-zagging across town, plus real links to book flights, hotels, and things to do. No sign-in required.</p>
 
     <div class="search-bar">
-      <input id="dest-input" type="text" placeholder="Where to? Try any city — Lisbon, Kyoto, Cape Town…" autocomplete="off" />
-      <select id="days-select">
-        <option value="2">2 days</option>
-        <option value="3">3 days</option>
-        <option value="4" selected>4 days</option>
-        <option value="5">5 days</option>
-        <option value="6">6 days</option>
-      </select>
+      <select id="country-select" aria-label="Country"></select>
+      <input id="dest-input" type="text" placeholder="Where to? Try any city, like Lisbon or Kyoto" autocomplete="off" />
+      <div id="suggest-box" class="suggest-box"></div>
+      <div class="date-field">
+        <label for="checkin-input">From</label>
+        <input id="checkin-input" type="date" />
+      </div>
+      <div class="date-field">
+        <label for="checkout-input">To</label>
+        <input id="checkout-input" type="date" />
+      </div>
       <button id="plan-btn">Plan trip</button>
     </div>
     <div class="quick-picks" id="quick-picks"></div>
 
     <div class="status-line" id="status-line"></div>
     <div class="weather-strip" id="weather-strip"></div>
+    <div class="book-strip" id="book-strip"></div>
   </header>
 
   <nav class="day-tabs" id="day-tabs"></nav>
   <main id="day-panels"></main>
 
   <footer>
-    Built with real, freely-licensed data — OpenStreetMap, Wikipedia, and Open-Meteo. No API keys, no tracking.
+    Real listings from OpenStreetMap, Wikipedia, and Open-Meteo. Every link opens the real page so you can book it yourself.
     <br/>
     <a href="https://github.com/dandremcneish" target="_blank" rel="noopener">github.com/dandremcneish</a>
   </footer>
 </div>
 
+<script src="countries.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

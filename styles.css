@@ -1,14 +1,16 @@
 :root {
-  --ink: #1e2530;
-  --ink-soft: #5b6474;
-  --paper: #fbf8f3;
-  --card: #ffffff;
+  --ink: #e9e7e1;
+  --ink-soft: #9aa0ad;
+  --paper: #14161c;
+  --card: #1d2028;
+  --card-2: #242833;
   --coral: #ff6b5b;
-  --coral-dark: #e5503f;
-  --teal: #1b8a8a;
-  --line: #ece7dd;
-  --shadow: 0 10px 30px -12px rgba(30, 37, 48, 0.18);
-  --shadow-soft: 0 4px 14px -6px rgba(30, 37, 48, 0.12);
+  --coral-dark: #ff8577;
+  --teal: #3fc7c1;
+  --gold: #e8b74a;
+  --line: #2b2f3a;
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+  --shadow-soft: 0 4px 14px -6px rgba(0, 0, 0, 0.4);
 }
 
 * { box-sizing: border-box; }
@@ -38,21 +40,23 @@ body {
 .hero p {
   color: var(--ink-soft);
   font-size: 16px;
-  max-width: 520px;
+  max-width: 540px;
   margin: 0 auto 28px;
   line-height: 1.5;
 }
 
 .search-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  max-width: 560px;
+  max-width: 680px;
   margin: 0 auto;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 8px;
   box-shadow: var(--shadow-soft);
+  position: relative;
 }
 .search-bar select, .search-bar input {
   border: none;
@@ -64,20 +68,56 @@ body {
   outline: none;
 }
 .search-bar select { cursor: pointer; flex: 0 0 auto; }
-.search-bar input { flex: 1; }
+.search-bar input { flex: 1; min-width: 160px; }
+.search-bar input::placeholder { color: var(--ink-soft); }
 .search-bar button {
   background: var(--coral);
-  color: white;
+  color: #14161c;
   border: none;
   border-radius: 10px;
   padding: 0 22px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
   cursor: pointer;
   transition: background 0.15s ease;
   flex: 0 0 auto;
 }
 .search-bar button:hover { background: var(--coral-dark); }
+.search-bar button:disabled { opacity: 0.65; cursor: default; }
+
+#country-select {
+  color: var(--ink);
+}
+#country-select option { color: #14161c; }
+
+.date-field { display: flex; flex-direction: column; gap: 2px; flex: 0 0 auto; }
+.date-field label { font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; padding: 0 12px; }
+.date-field input[type="date"] { color-scheme: dark; }
+
+/* City suggestion dropdown */
+.suggest-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 8px;
+  right: 8px;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 20;
+  overflow: hidden;
+  display: none;
+}
+.suggest-box.open { display: block; }
+.suggest-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.suggest-item:last-child { border-bottom: none; }
+.suggest-item:hover, .suggest-item.active { background: rgba(255, 107, 91, 0.12); color: var(--coral); }
 
 /* ---------- Quick picks & status ---------- */
 .quick-picks {
@@ -127,7 +167,34 @@ body {
   min-width: 64px;
 }
 .weather-chip .d { color: var(--ink-soft); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
-.weather-chip .t { font-weight: 700; font-size: 15px; margin-top: 2px; }
+.weather-chip .t { font-weight: 700; font-size: 15px; margin-top: 2px; color: var(--gold); }
+
+/* ---------- Flights & hotels ---------- */
+.book-strip {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0 10px;
+}
+.book-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-soft);
+}
+.book-card:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+.book-card .ic { font-size: 17px; }
+.book-card .sub { display: block; font-weight: 400; color: var(--ink-soft); font-size: 11.5px; margin-top: 1px; }
 
 /* ---------- Day tabs ---------- */
 .day-tabs {
@@ -149,11 +216,11 @@ body {
   transition: all 0.15s ease;
 }
 .day-tab.active {
-  background: var(--ink);
-  color: white;
-  border-color: var(--ink);
+  background: var(--coral);
+  color: #14161c;
+  border-color: var(--coral);
 }
-.day-tab .km { font-weight: 400; opacity: 0.7; font-size: 12px; margin-left: 6px; }
+.day-tab .km { font-weight: 400; opacity: 0.75; font-size: 12px; margin-left: 6px; }
 
 /* ---------- Itinerary cards ---------- */
 .day-panel { display: none; padding-bottom: 60px; }
@@ -191,7 +258,7 @@ body {
   font-weight: 800;
   font-size: 18px;
   color: var(--ink-soft);
-  background: #f4f1ea;
+  background: var(--card-2);
 }
 .stop-num::before { content: counter(stop); }
 
@@ -200,7 +267,7 @@ body {
   flex-shrink: 0;
   background-size: cover;
   background-position: center;
-  background-color: #eee2d3;
+  background-color: var(--card-2);
 }
 .stop-img.noimg {
   display: flex; align-items: center; justify-content: center;
@@ -213,13 +280,13 @@ body {
 .stop-tags { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .tag {
   font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em;
-  background: #eef7f7; color: var(--teal); padding: 3px 9px; border-radius: 999px;
+  background: rgba(63, 199, 193, 0.14); color: var(--teal); padding: 3px 9px; border-radius: 999px;
 }
 .stop-link { font-size: 12.5px; font-weight: 600; color: var(--coral); text-decoration: none; }
 .stop-link:hover { text-decoration: underline; }
 
 .drag-handle {
-  display: flex; align-items: center; padding: 0 12px; color: #cfc7b8; flex-shrink: 0;
+  display: flex; align-items: center; padding: 0 12px; color: #454b5a; flex-shrink: 0;
   cursor: grab; user-select: none; font-size: 18px; letter-spacing: 2px;
 }
 
@@ -249,4 +316,6 @@ footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
   .stop-img { width: 100%; height: 140px; }
   .stop-num { width: 100%; height: 28px; }
   .drag-handle { position: absolute; top: 10px; right: 10px; }
+  .search-bar { flex-direction: column; align-items: stretch; }
+  .search-bar input, .search-bar select, .search-bar button { width: 100%; }
 }
