@@ -62,19 +62,30 @@ function setStatus(msg, isError) {
   els.statusLine.classList.toggle("error", !!isError);
 }
 
+let searchInFlight = false;
+
 async function handleSearch() {
+  if (searchInFlight) return; // ignore double-clicks / double-Enter while a search is running
   const query = els.destInput.value.trim();
   if (!query) return;
   const days = parseInt(els.daysSelect.value, 10) || 4;
 
-  // If it's one of the quick-pick cities, use the pre-built file — instant.
-  const preset = QUICK_PICKS.find((d) => d.label.toLowerCase() === query.toLowerCase());
-  if (preset) {
-    await loadPrebuilt(preset.file, preset.label);
-    return;
+  searchInFlight = true;
+  els.planBtn.disabled = true;
+  els.planBtn.textContent = "Planning…";
+  try {
+    // If it's one of the quick-pick cities, use the pre-built file — instant.
+    const preset = QUICK_PICKS.find((d) => d.label.toLowerCase() === query.toLowerCase());
+    if (preset) {
+      await loadPrebuilt(preset.file, preset.label);
+    } else {
+      await planLiveTrip(query, days);
+    }
+  } finally {
+    searchInFlight = false;
+    els.planBtn.disabled = false;
+    els.planBtn.textContent = "Plan trip";
   }
-
-  await planLiveTrip(query, days);
 }
 
 async function loadPrebuilt(file, label) {
@@ -192,15 +203,23 @@ async function queryOverpass(query, attempts = 3) {
   let lastErr = null;
   for (let i = 0; i < attempts; i++) {
     const mirror = OVERPASS_MIRRORS[i % OVERPASS_MIRRORS.length];
+    const controller = new AbortController();
+    const killer = setTimeout(() => controller.abort(), 12000); // don't let one slow/queued mirror stall the whole search
     try {
-      const res = await fetch(mirror, { method: "POST", body: "data=" + encodeURIComponent(query) });
+      const res = await fetch(mirror, {
+        method: "POST",
+        body: "data=" + encodeURIComponent(query),
+        signal: controller.signal,
+      });
       const text = await res.text();
       const data = JSON.parse(text); // mirrors return HTML/XML on rate-limit or error; this throws for those
       if (data.remark) throw new Error("overpass remark: " + data.remark);
       return data;
     } catch (err) {
       lastErr = err;
-      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 900 * (i + 1)));
+      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 700 * (i + 1)));
+    } finally {
+      clearTimeout(killer);
     }
   }
   throw lastErr || new Error("overpass failed");
