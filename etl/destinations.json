@@ -1,0 +1,34 @@
+{
+  "paris": {
+    "label": "Paris, France",
+    "landmarks": [
+      "Eiffel Tower", "Louvre Museum", "Notre-Dame de Paris", "Arc de Triomphe",
+      "Sacré-Cœur, Paris", "Musée d'Orsay", "Panthéon, Paris", "Luxembourg Gardens",
+      "Sainte-Chapelle", "Champs-Élysées", "Montmartre", "Palace of Versailles",
+      "Centre Pompidou", "Place de la Concorde", "Le Marais",
+      "Catacombs of Paris", "Musée Rodin"
+    ],
+    "center": {"lat": 48.8566, "lon": 2.3522}
+  },
+  "rome": {
+    "label": "Rome, Italy",
+    "landmarks": [
+      "Colosseum", "Roman Forum", "Pantheon, Rome", "Trevi Fountain",
+      "Vatican Museums", "St. Peter's Basilica", "Sistine Chapel",
+      "Spanish Steps", "Piazza Navona", "Castel Sant'Angelo",
+      "Trastevere", "Borghese Gallery", "Palatine Hill", "Campo de' Fiori",
+      "Basilica di Santa Maria Maggiore"
+    ],
+    "center": {"lat": 41.9028, "lon": 12.4964}
+  },
+  "tokyo": {
+    "label": "Tokyo, Japan",
+    "landmarks": [
+      "Senso-ji", "Tokyo Tower", "Meiji Shrine", "Shibuya Crossing",
+      "Tokyo Skytree", "Tsukiji Outer Market", "Ueno Park", "Akihabara",
+      "Shinjuku Gyoen", "Tokyo Imperial Palace", "Odaiba", "Harajuku",
+      "Ginza", "teamLab Planets"
+    ],
+    "center": {"lat": 35.6762, "lon": 139.6503}
+  }
+}
