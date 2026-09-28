@@ -1,0 +1,177 @@
+{
+  "destination": "Tokyo, Japan",
+  "generated_at": "2026-09-28",
+  "weather": {
+    "dates": [
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04"
+    ],
+    "high_c": [
+      24.2,
+      20.8,
+      21.8,
+      27.0,
+      24.8,
+      22.3,
+      22.7
+    ]
+  },
+  "days": 4,
+  "itinerary": [
+    {
+      "day": 1,
+      "stops": [
+        {
+          "name": "Tsukiji Outer Market",
+          "lat": 35.6653884,
+          "lon": 139.7704732,
+          "category": "landmark",
+          "description": null,
+          "image": null,
+          "wiki_url": null
+        },
+        {
+          "name": "Ginza",
+          "lat": 35.6720135,
+          "lon": 139.7647202,
+          "category": "landmark",
+          "description": "Ginza is a district of Ch\u016b\u014d, Tokyo, located south of Yaesu and Ky\u014dbashi, west of Tsukiji, east of Y\u016brakuch\u014d and Uchisaiwaich\u014d, and north of Shinbashi. It is a popular upscale shopping area of Tokyo, with numerous internationally renowned department stores, boutiques, restaurants ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Ginza-WAKO_at_night.jpg/330px-Ginza-WAKO_at_night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Ginza"
+        },
+        {
+          "name": "Tokyo Imperial Palace",
+          "lat": 35.6838467,
+          "lon": 139.7506859,
+          "category": "landmark",
+          "description": "The Imperial Palace  is the main residence of the emperor of Japan. It is a large park-like area located in the Chiyoda district of the Chiyoda ward of Tokyo and contains several buildings, including the Fukiage Palace , where the emperor has his living quarters; the main palace ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Seimon_Ishibashi.JPG/330px-Seimon_Ishibashi.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Tokyo_Imperial_Palace"
+        },
+        {
+          "name": "Tokyo Tower",
+          "lat": 35.6584491,
+          "lon": 139.745536,
+          "category": "landmark",
+          "description": "Tokyo Tower , also known by its official name Japan Radio Tower is a communications and observation tower in the district of Shiba-koen in Minato, Tokyo, Japan, completed in 1958. At 332.9 meters, it was the tallest tower in Japan until the construction of Tokyo Skytree in 2012. ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Tokyo_Tower_2023.jpg/330px-Tokyo_Tower_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Tokyo_Tower"
+        },
+        {
+          "name": "teamLab Planets",
+          "lat": 35.64938,
+          "lon": 139.789728,
+          "category": "landmark",
+          "description": null,
+          "image": null,
+          "wiki_url": null
+        }
+      ],
+      "walking_km": 9.7
+    },
+    {
+      "day": 2,
+      "stops": [
+        {
+          "name": "Harajuku",
+          "lat": 35.6687049,
+          "lon": 139.7053357,
+          "category": "landmark",
+          "description": "Harajuku  is a district in Shibuya, Tokyo. Harajuku is the common name given to a geographic area spreading from Harajuku Station to Omotesando, corresponding on official maps of Shibuya ward as Jing\u016bmae 1 ch\u014dme to 4 ch\u014dme. In popular reference, Harajuku also encompasses many sma",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/JRE-Harajuku-Station-07.jpg/330px-JRE-Harajuku-Station-07.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Harajuku"
+        },
+        {
+          "name": "Meiji Shrine",
+          "lat": 35.6748417,
+          "lon": 139.6996266,
+          "category": "landmark",
+          "description": "Meiji Shrine  is a Shinto shrine in Shibuya, Tokyo, that is dedicated to the deified spirits of Emperor Meiji and his wife, Empress Sh\u014dken. The shrine does not contain the emperor's grave, which is located at Fushimi-momoyama, south of Kyoto.",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Meiji_Jingu_2023-3.jpg/330px-Meiji_Jingu_2023-3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Meiji_Shrine"
+        },
+        {
+          "name": "Shinjuku Gyoen",
+          "lat": 35.6850716,
+          "lon": 139.7095466,
+          "category": "landmark",
+          "description": "Shinjuku Gyo-en  or Shinjuku Gyoen National Garden is a large public garden in Shinjuku and Shibuya, Tokyo, Japan. Originally a residence of the Nait\u014d family in the Edo period, it later became a garden under the management of Japan Imperial Household Agency and is now a national ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Shinjuku_Gyoen_National_Garden_-_sakura_3.JPG/330px-Shinjuku_Gyoen_National_Garden_-_sakura_3.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Shinjuku_Gyo-en"
+        },
+        {
+          "name": "Shibuya Crossing",
+          "lat": 35.6594951,
+          "lon": 139.7004982,
+          "category": "landmark",
+          "description": "Shibuya Scramble Crossing , commonly known as Shibuya Crossing, is a scramble crossing in Shibuya, Tokyo, Japan. It is located near Shibuya Station in Shibuya, a major commercial and entertainment district in Tokyo. It has been described as the world's busiest pedestrian crossing",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Shibuya_Crossing%2C_Aerial.jpg/330px-Shibuya_Crossing%2C_Aerial.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Shibuya_Crossing"
+        }
+      ],
+      "walking_km": 5.3
+    },
+    {
+      "day": 3,
+      "stops": [
+        {
+          "name": "Senso-ji",
+          "lat": 35.7134032,
+          "lon": 139.7955265,
+          "category": "landmark",
+          "description": "Sens\u014d-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisattva of compassion. Structures in the temple complex include the main hall, a five-story pagoda and l",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/330px-Sensoji_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Sens%C5%8D-ji"
+        },
+        {
+          "name": "Tokyo Skytree",
+          "lat": 35.7100543,
+          "lon": 139.8107141,
+          "category": "landmark",
+          "description": "Tokyo Skytree , a.k.a Tokyo Sky Tree, is a broadcasting and observation tower, located in Sumida, Tokyo, Japan. It has been the tallest tower in Japan since opening in 2012, and reached its full height of 634 metres in early 2011, making it the tallest tower in the world, displac",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Tokyo_Skytree_2014_%E2%85%A2.jpg/330px-Tokyo_Skytree_2014_%E2%85%A2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Tokyo_Skytree"
+        },
+        {
+          "name": "Ueno Park",
+          "lat": 35.7152915,
+          "lon": 139.7738278,
+          "category": "landmark",
+          "description": "Ueno Park  is a spacious public park in the Ueno district of Tait\u014d, Tokyo, Japan. The park was established in 1873 on lands formerly belonging to the temple of Kan'ei-ji. Amongst the country's first public parks, it was founded following the Western example as part of the borrowi",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Ueno_park.jpg/330px-Ueno_park.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Ueno_Park"
+        },
+        {
+          "name": "Akihabara",
+          "lat": 35.7018928,
+          "lon": 139.7743684,
+          "category": "landmark",
+          "description": "Akihabara  is a neighborhood in the Chiyoda ward of Tokyo, Japan, generally considered to be the area surrounding Akihabara Station. This area is part of the Sotokanda (\u5916\u795e\u7530) and Kanda-Sakumach\u014d districts of Chiyoda. There is an administrative district called Akihabara, located no",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Sotokanda%2C_Akihabara_Electric_Town_at_night_20231114.png/330px-Sotokanda%2C_Akihabara_Electric_Town_at_night_20231114.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Akihabara"
+        }
+      ],
+      "walking_km": 6.3
+    },
+    {
+      "day": 4,
+      "stops": [
+        {
+          "name": "Odaiba",
+          "lat": 35.6190032,
+          "lon": 139.7793576,
+          "category": "landmark",
+          "description": "Odaiba (\u304a\u53f0\u5834) is a large artificial island in Tokyo Bay, Japan, across the Rainbow Bridge from central Tokyo. Odaiba was initially built for defensive purposes in the 1850s. The land was dramatically expanded during the late 20th century as a seaport district, and was redeveloped ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Odaiba_close_up_-_2025_Jan_14_01-27PM.jpeg/330px-Odaiba_close_up_-_2025_Jan_14_01-27PM.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Odaiba"
+        }
+      ],
+      "walking_km": 0
+    }
+  ]
+}

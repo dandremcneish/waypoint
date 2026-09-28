@@ -1,0 +1,186 @@
+{
+  "destination": "Rome, Italy",
+  "generated_at": "2026-09-28",
+  "weather": {
+    "dates": [
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04"
+    ],
+    "high_c": [
+      27.0,
+      27.2,
+      27.4,
+      27.5,
+      25.5,
+      27.6,
+      26.4
+    ]
+  },
+  "days": 4,
+  "itinerary": [
+    {
+      "day": 1,
+      "stops": [
+        {
+          "name": "Trevi Fountain",
+          "lat": 41.9009778,
+          "lon": 12.4832848,
+          "category": "landmark",
+          "description": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86\u00a0ft) high and 49.15 metres (161.3\u00a0ft) wide, it is the largest Baroque fountain in the",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/330px-Trevi_Fountain_-_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Trevi_Fountain"
+        },
+        {
+          "name": "Pantheon",
+          "lat": 41.898616,
+          "lon": 12.4768334,
+          "category": "landmark",
+          "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117\u2013138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most infl",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Pantheon_%28Rome%29_-_Right_side_and_front.jpg/330px-Pantheon_%28Rome%29_-_Right_side_and_front.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
+        },
+        {
+          "name": "Piazza Navona",
+          "lat": 41.8989282,
+          "lon": 12.4731178,
+          "category": "landmark",
+          "description": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known a",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Piazza_Navona_%28Rome%29_at_night.jpg/330px-Piazza_Navona_%28Rome%29_at_night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Piazza_Navona"
+        },
+        {
+          "name": "Campo de' Fiori",
+          "lat": 41.8955774,
+          "lon": 12.4721586,
+          "category": "landmark",
+          "description": "Campo de' Fiori is a rectangular square south of Piazza Navona in Rome, Italy, at the border between the rioni Parione and Regola. It is diagonally southeast of the Palazzo della Cancelleria and one block northeast of the Palazzo Farnese. The name dates to the Middle Ages when th",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Campo_dei_Fiori.jpg/330px-Campo_dei_Fiori.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Campo_de'_Fiori"
+        },
+        {
+          "name": "Trastevere",
+          "lat": 41.8911586,
+          "lon": 12.4668459,
+          "category": "landmark",
+          "description": "Trastevere is the 13th rione of Rome, Italy. It is identified by the initials R. XIII and it is located within Municipio I. Its name comes from Latin trans Tiberim.",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Santa_Maria_in_Trastevere_fountain.jpg/330px-Santa_Maria_in_Trastevere_fountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Trastevere"
+        },
+        {
+          "name": "Roman Forum",
+          "lat": 41.8916414,
+          "lon": 12.4867296,
+          "category": "landmark",
+          "description": "The Roman Forum, also known by its Latin name Forum Romanum, is a rectangular forum (plaza) surrounded by the ruins of several important ancient government buildings at the centre of the city of Rome. Citizens of the ancient city referred to this space, originally a marketplace, ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Foro_Romano_Musei_Capitolini_Roma.jpg/330px-Foro_Romano_Musei_Capitolini_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Roman_Forum"
+        },
+        {
+          "name": "Palatine Hill",
+          "lat": 41.8893064,
+          "lon": 12.4871093,
+          "category": "landmark",
+          "description": "The Palatine Hill, which is the centremost of the seven hills of Rome, is one of the most ancient parts of the city; it has been called \"the first nucleus of the Roman Empire\". The site is now mainly a large open-air museum and the Palatine Museum houses many finds from the excav",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Palatine_Hill_from_across_the_Circus_Maximus_April_2019.jpg/330px-Palatine_Hill_from_across_the_Circus_Maximus_April_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Palatine_Hill"
+        },
+        {
+          "name": "Colosseum",
+          "lat": 41.8909421,
+          "lon": 12.491903,
+          "category": "landmark",
+          "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and w",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Colosseum"
+        },
+        {
+          "name": "Basilica di Santa Maria Maggiore",
+          "lat": 41.8976275,
+          "lon": 12.4984704,
+          "category": "landmark",
+          "description": "The Papal Basilica of Saint Mary the Great, also informally known as the Basilica of Saint Mary Major, is a Roman Catholic Papal Basilica and one of the Seven Pilgrim Churches of Rome. The largest Marian church in Rome, it is regarded as the first Marian sanctuary and the mother ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Basilica_di_Santa_Maria_Maggiore_-_Roma.jpg/330px-Basilica_di_Santa_Maria_Maggiore_-_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Santa_Maria_Maggiore"
+        },
+        {
+          "name": "Borghese Gallery",
+          "lat": 41.9142493,
+          "lon": 12.4921863,
+          "category": "landmark",
+          "description": "The Galleria Borghese or Borghese Gallery is an art gallery in Rome, Italy, housed in the former Villa Borghese Pinciana. At the outset, the gallery building was integrated with its gardens, but nowadays the Villa Borghese gardens are considered a separate tourist attraction. The",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg/330px-Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Galleria_Borghese"
+        }
+      ],
+      "walking_km": 7.1
+    },
+    {
+      "day": 2,
+      "stops": [
+        {
+          "name": "Sistine Chapel",
+          "lat": 41.9029338,
+          "lon": 12.4544043,
+          "category": "landmark",
+          "description": "The Sistine Chapel is a chapel in the Apostolic Palace, the pope's official residence in Vatican City. Originally known as the Cappella Magna, it takes its name from Pope Sixtus IV, who had it built between 1473 and 1481. Since that time, it has served as a place of both religiou",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Sistina-interno.jpg/330px-Sistina-interno.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Sistine_Chapel"
+        },
+        {
+          "name": "St. Peter's Basilica",
+          "lat": 41.9021569,
+          "lon": 12.4537105,
+          "category": "landmark",
+          "description": "The Papal Basilica of Saint Peter in the Vatican, or simply St. Peter's Basilica, is a church of the Italian Renaissance located in Vatican City, an independent microstate enclaved within the city of Rome, Italy. It was initially planned in the 15th century by Pope Nicholas V and",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg/330px-Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/St._Peter's_Basilica"
+        },
+        {
+          "name": "Vatican Museums",
+          "lat": 41.904961,
+          "lon": 12.4546617,
+          "category": "landmark",
+          "description": "The Vatican Museums are the public museums of the Vatican City. They display works from the immense collection amassed by the Catholic Church and the papacy throughout the centuries, including several of the best-known Roman sculptures and most important masterpieces of Renaissan",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Musei_vaticani_Coat_of_Arms.svg/330px-Musei_vaticani_Coat_of_Arms.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Vatican_Museums"
+        }
+      ],
+      "walking_km": 0.4
+    },
+    {
+      "day": 3,
+      "stops": [
+        {
+          "name": "Castel Sant'Angelo",
+          "lat": 42.4059002,
+          "lon": 13.0157587,
+          "category": "landmark",
+          "description": "Castel Sant'Angelo, also known as Mausoleum of Hadrian, is a towering rotunda in Parco Adriano, Rome, Italy. It was initially commissioned by the Roman Emperor Hadrian as a mausoleum for himself and his family. The popes later used the building as a fortress and castle dedicated ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/330px-Castel_Sant%27Angelo_at_Night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Castel_Sant'Angelo"
+        }
+      ],
+      "walking_km": 0
+    },
+    {
+      "day": 4,
+      "stops": [
+        {
+          "name": "Spanish Steps",
+          "lat": 51.4918433,
+          "lon": -2.7611128,
+          "category": "landmark",
+          "description": "The Spanish Steps in Rome, Italy, climb a steep slope between the Piazza di Spagna at the base and the Piazza Trinit\u00e0 dei Monti, dominated by the Trinit\u00e0 dei Monti church, at the top.",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Piazza_di_Spagna_%28Rome%29_0004.jpg/330px-Piazza_di_Spagna_%28Rome%29_0004.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Spanish_Steps"
+        }
+      ],
+      "walking_km": 0
+    }
+  ]
+}
