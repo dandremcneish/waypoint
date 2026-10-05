@@ -1,24 +1,24 @@
 {
   "destination": "Rome, Italy",
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-10-05",
   "weather": {
     "dates": [
-      "2026-09-28",
-      "2026-09-29",
-      "2026-09-30",
-      "2026-10-01",
-      "2026-10-02",
-      "2026-10-03",
-      "2026-10-04"
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-10",
+      "2026-10-11"
     ],
     "high_c": [
-      27.0,
-      27.2,
-      27.4,
-      27.5,
-      25.5,
-      27.6,
-      26.4
+      25.7,
+      23.2,
+      27.3,
+      22.2,
+      26.3,
+      22.8,
+      23.5
     ]
   },
   "days": 4,
@@ -40,7 +40,7 @@
           "lat": 41.898616,
           "lon": 12.4768334,
           "category": "landmark",
-          "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117\u2013138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most infl",
+          "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117\u2013138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Pantheon_%28Rome%29_-_Right_side_and_front.jpg/330px-Pantheon_%28Rome%29_-_Right_side_and_front.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
           "wiki_url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
         },
