@@ -1,24 +1,24 @@
 {
   "destination": "Paris, France",
-  "generated_at": "2026-10-05",
+  "generated_at": "2026-10-12",
   "weather": {
     "dates": [
-      "2026-10-05",
-      "2026-10-06",
-      "2026-10-07",
-      "2026-10-08",
-      "2026-10-09",
-      "2026-10-10",
-      "2026-10-11"
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-17",
+      "2026-10-18"
     ],
     "high_c": [
-      24.1,
-      23.8,
-      18.3,
-      15.5,
-      16.5,
-      17.3,
-      17.5
+      18.7,
+      24.6,
+      19.4,
+      21.5,
+      20.1,
+      15.6,
+      14.8
     ]
   },
   "days": 4,
@@ -31,7 +31,7 @@
           "lat": 48.8553933,
           "lon": 2.3449941,
           "category": "landmark",
-          "description": "The Sainte-Chapelle is a royal chapel in the Gothic style, within the medieval Palais de la Cit\u00e9, the residence of the Kings of France until the 14th century, on the \u00cele de la Cit\u00e9 in the River Seine in Paris, France.",
+          "description": "The Sainte-Chapelle is a royal chapel located on the \u00cele de la Cit\u00e9 in the middle of the River Seine in Paris. It was part of the medieval Palais de la Cit\u00e9, the main residence of the Kings of France until the 14th century. Built between 1238 and 1248, the chapel was commissioned",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Sainte_Chapelle_-_Upper_level_1.jpg/330px-Sainte_Chapelle_-_Upper_level_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
           "wiki_url": "https://en.wikipedia.org/wiki/Sainte-Chapelle"
         },
