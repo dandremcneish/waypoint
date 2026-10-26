@@ -1,24 +1,24 @@
 {
   "destination": "Rome, Italy",
-  "generated_at": "2026-10-19",
+  "generated_at": "2026-10-26",
   "weather": {
     "dates": [
-      "2026-10-19",
-      "2026-10-20",
-      "2026-10-21",
-      "2026-10-22",
-      "2026-10-23",
-      "2026-10-24",
-      "2026-10-25"
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01"
     ],
     "high_c": [
-      24.3,
-      24.4,
-      22.5,
-      22.4,
-      21.0,
-      21.3,
-      21.1
+      22.3,
+      21.5,
+      20.8,
+      22.2,
+      19.7,
+      19.7,
+      18.6
     ]
   },
   "days": 4,
@@ -27,20 +27,11 @@
       "day": 1,
       "stops": [
         {
-          "name": "Trevi Fountain",
-          "lat": 41.9009778,
-          "lon": 12.4832848,
-          "category": "landmark",
-          "description": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86\u00a0ft) high and 49.15 metres (161.3\u00a0ft) wide, it is the largest Baroque fountain in the",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/330px-Trevi_Fountain_-_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-          "wiki_url": "https://en.wikipedia.org/wiki/Trevi_Fountain"
-        },
-        {
           "name": "Pantheon",
           "lat": 41.898616,
           "lon": 12.4768334,
           "category": "landmark",
-          "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117\u2013138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
+          "description": "The Pantheon is an ancient Polytheist temple in Rome, Italy, originally built under Roman emperor Augustus and reconstructed under Hadrian (117\u2013138).",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Pantheon_%28Rome%29_-_Right_side_and_front.jpg/330px-Pantheon_%28Rome%29_-_Right_side_and_front.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
           "wiki_url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
         },
@@ -72,6 +63,48 @@
           "wiki_url": "https://en.wikipedia.org/wiki/Trastevere"
         },
         {
+          "name": "Castel Sant'Angelo",
+          "lat": 41.9031178,
+          "lon": 12.4663427,
+          "category": "landmark",
+          "description": "Castel Sant'Angelo, also known as Mausoleum of Hadrian, is a towering rotunda in Parco Adriano, Rome, Italy. It was initially commissioned by the Roman Emperor Hadrian as a mausoleum for himself and his family. The popes later used the building as a fortress and castle dedicated ",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/330px-Castel_Sant%27Angelo_at_Night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Castel_Sant'Angelo"
+        },
+        {
+          "name": "Trevi Fountain",
+          "lat": 41.9009778,
+          "lon": 12.4832848,
+          "category": "landmark",
+          "description": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86\u00a0ft) high and 49.15 metres (161.3\u00a0ft) wide, it is the largest Baroque fountain in the",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/330px-Trevi_Fountain_-_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Trevi_Fountain"
+        },
+        {
+          "name": "Borghese Gallery",
+          "lat": 41.9142493,
+          "lon": 12.4921863,
+          "category": "landmark",
+          "description": "The Galleria Borghese or Borghese Gallery is an art gallery in Rome, Italy, housed in the former Villa Borghese Pinciana. At the outset, the gallery building was integrated with its gardens, but nowadays the Villa Borghese gardens are considered a separate tourist attraction. The",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg/330px-Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Galleria_Borghese"
+        }
+      ],
+      "walking_km": 5.8
+    },
+    {
+      "day": 2,
+      "stops": [
+        {
+          "name": "Colosseum",
+          "lat": 41.8909421,
+          "lon": 12.491903,
+          "category": "landmark",
+          "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and w",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+          "wiki_url": "https://en.wikipedia.org/wiki/Colosseum"
+        },
+        {
           "name": "Roman Forum",
           "lat": 41.8916414,
           "lon": 12.4867296,
@@ -90,15 +123,6 @@
           "wiki_url": "https://en.wikipedia.org/wiki/Palatine_Hill"
         },
         {
-          "name": "Colosseum",
-          "lat": 41.8909421,
-          "lon": 12.491903,
-          "category": "landmark",
-          "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and w",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/330px-Colosseo_2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-          "wiki_url": "https://en.wikipedia.org/wiki/Colosseum"
-        },
-        {
           "name": "Basilica di Santa Maria Maggiore",
           "lat": 41.8976275,
           "lon": 12.4984704,
@@ -106,21 +130,12 @@
           "description": "The Papal Basilica of Saint Mary the Great, also informally known as the Basilica of Saint Mary Major, is a Roman Catholic Papal Basilica and one of the Seven Pilgrim Churches of Rome. The largest Marian church in Rome, it is regarded as the first Marian sanctuary and the mother ",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Basilica_di_Santa_Maria_Maggiore_-_Roma.jpg/330px-Basilica_di_Santa_Maria_Maggiore_-_Roma.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
           "wiki_url": "https://en.wikipedia.org/wiki/Santa_Maria_Maggiore"
-        },
-        {
-          "name": "Borghese Gallery",
-          "lat": 41.9142493,
-          "lon": 12.4921863,
-          "category": "landmark",
-          "description": "The Galleria Borghese or Borghese Gallery is an art gallery in Rome, Italy, housed in the former Villa Borghese Pinciana. At the outset, the gallery building was integrated with its gardens, but nowadays the Villa Borghese gardens are considered a separate tourist attraction. The",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg/330px-Galleria_Borghese_-_logo_%28Italy%2C_2022-%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-          "wiki_url": "https://en.wikipedia.org/wiki/Galleria_Borghese"
         }
       ],
-      "walking_km": 7.1
+      "walking_km": 2.0
     },
     {
-      "day": 2,
+      "day": 3,
       "stops": [
         {
           "name": "Sistine Chapel",
@@ -151,21 +166,6 @@
         }
       ],
       "walking_km": 0.4
-    },
-    {
-      "day": 3,
-      "stops": [
-        {
-          "name": "Castel Sant'Angelo",
-          "lat": 42.4059002,
-          "lon": 13.0157587,
-          "category": "landmark",
-          "description": "Castel Sant'Angelo, also known as Mausoleum of Hadrian, is a towering rotunda in Parco Adriano, Rome, Italy. It was initially commissioned by the Roman Emperor Hadrian as a mausoleum for himself and his family. The popes later used the building as a fortress and castle dedicated ",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Castel_Sant%27Angelo_at_Night.jpg/330px-Castel_Sant%27Angelo_at_Night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-          "wiki_url": "https://en.wikipedia.org/wiki/Castel_Sant'Angelo"
-        }
-      ],
-      "walking_km": 0
     },
     {
       "day": 4,
